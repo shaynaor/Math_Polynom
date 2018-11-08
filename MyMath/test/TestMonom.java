@@ -26,6 +26,7 @@ class TestMonom {
 
 	@Test
 	void test() {
+		System.out.println("test");
 		fail("Not yet implemented");
 	}
 
