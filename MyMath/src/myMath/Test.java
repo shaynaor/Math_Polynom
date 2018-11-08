@@ -3,7 +3,7 @@ package myMath;
 public class Test {
 	
 	public static void main(String[] args) {
-		System.out.println("check");
+		System.out.println("chefck");
 		System.out.println("***********------ Monom-Tests------**************");
 		System.out.println();
 		test_monom_default_constructor();
