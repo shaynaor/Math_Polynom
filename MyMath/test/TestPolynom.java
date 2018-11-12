@@ -109,7 +109,41 @@ class TestPolynom {
 		assertNotEquals(p7, p3);
 		assertEquals(p7.toString(), p3.toString());
 		assertEquals(p7.f(30), p3.f(30));
-		
 	}
+	
+	@Test
+	void test_polynom_derivative() {
+		Polynom result_1 = new Polynom("0");
+		assertEquals(result_1.toString(), p1.derivative().toString());
+		
+		Polynom result_2 = new Polynom("-6.0x^2+35x^4");
+		assertEquals(result_2.toString(), p2.derivative().toString());
+		
+		Polynom result_3 = new Polynom("5.2-12.0x^2-10.8x^3");
+		assertEquals(result_3.toString(), p3.derivative().toString());
+		
+		Polynom result_4 = new Polynom("-1.0+4x");
+		assertEquals(result_4.toString(), p4.derivative().toString());
+	}
+	
+	@Test
+	void test_polynom_equals() {
+		Polynom p5 = new Polynom();
+		p5 = (Polynom)p1.copy();
+		assertTrue(p1.equals(p5));
+		
+		Polynom p6 = new Polynom();
+		p6 = (Polynom)p2.copy();
+		assertTrue(p2.equals(p6));
+		
+		Polynom p7 = new Polynom();
+		p7 = (Polynom)p3.copy();
+		assertTrue(p3.equals(p7));
+		
+		Polynom p8 = new Polynom("7.0-1.0x+2.0x^2");
+		assertTrue(p4.equals(p8));
+	}
+	
+	
 
 }
