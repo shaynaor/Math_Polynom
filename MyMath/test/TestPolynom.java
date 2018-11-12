@@ -40,10 +40,6 @@ class TestPolynom {
 	void test_polynom_default_constructor() {
 		Polynom p0 = new Polynom();
 		assertEquals("", p0.toString());
-		System.out.println(p1);
-		System.out.println(p2);
-		System.out.println(p3);
-		System.out.println(p4);
 	}
 
 	@Test
@@ -162,9 +158,24 @@ class TestPolynom {
 		assertTrue(!p4.isZero());
 		p1.add(m4);
 		assertTrue(!p1.isZero());
-		
 	}
 	
+	@Test
+	void test_polynom_multiply() {
+		p1.multiply(p3);
+		Polynom result_1 = new Polynom("0");
+		assertEquals(result_1.toString(), p1.toString());
+		
+		p2.multiply(p4);
+		Polynom result_2 = new Polynom("-14.0x^3+2.0x^4+45.0x^5-7.0x^6+14.0x^7");
+		assertEquals(result_2.toString(), p2.toString());
+	}
 	
-
+	@Test
+	void test_polynom_root() {
+		assertEquals(0, Math.round(p2.root(-0.4, 0.4, 0.0001)));
+		assertEquals(1, Math.round(p3.root(0, 2, 0.0001)));
+		assertEquals(-1, Math.round(p3.root(-2, 0, 0.0001)));
+	}
+		
 }
