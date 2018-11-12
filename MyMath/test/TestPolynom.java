@@ -40,6 +40,10 @@ class TestPolynom {
 	void test_polynom_default_constructor() {
 		Polynom p0 = new Polynom();
 		assertEquals("", p0.toString());
+		System.out.println(p1);
+		System.out.println(p2);
+		System.out.println(p3);
+		System.out.println(p4);
 	}
 
 	@Test
@@ -76,6 +80,35 @@ class TestPolynom {
 		p3.add(p4);
 		Polynom result_2 = new Polynom("14.0+4.2x+2.0x^2-4.0x^3-2.7x^4");
 		assertEquals(result_2.toString(), p3.toString());
+		
+	}
+	
+	@Test
+	void test_polynom_area() {
+		assertEquals(9,Math.round(p3.area(0, 1.223, 0.0001)));
+		assertEquals(6, Math.round(p3.area(-1.428, 0, 0.0001)));
+		assertEquals(15, Math.round(p4.area(-1, 1, 0.0001)));
+	}
+	
+	@Test
+	void test_polynom_copy() {
+		Polynom p5 = new Polynom();
+		p5 = (Polynom)p1.copy();
+		assertNotEquals(p5, p1);
+		assertEquals(p5.toString(), p1.toString());
+		assertEquals(p5.f(30), p1.f(30));
+		
+		Polynom p6 = new Polynom();
+		p6 = (Polynom)p2.copy();
+		assertNotEquals(p6, p2);
+		assertEquals(p6.toString(), p2.toString());
+		assertEquals(p6.f(30), p2.f(30));
+		
+		Polynom p7 = new Polynom();
+		p7 = (Polynom)p3.copy();
+		assertNotEquals(p7, p3);
+		assertEquals(p7.toString(), p3.toString());
+		assertEquals(p7.f(30), p3.f(30));
 		
 	}
 
