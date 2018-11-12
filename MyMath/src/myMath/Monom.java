@@ -22,7 +22,7 @@ public class Monom implements function {
 	 * @param b the power.
 	 */
 	public Monom(double a, int b) {
-		if(b < 0) //if the power is negative.
+		if (b < 0) // if the power is negative.
 			throw new RuntimeException("Can not insert negative power!!");
 		else if (a == 0) { // if the monom is'nt the zero monom.
 			this.set_coefficient(0);
@@ -137,11 +137,8 @@ public class Monom implements function {
 		else if (this._coefficient == 0) {// if my monom is the zero monom.
 			this.set_coefficient(m1._coefficient);
 			this.set_power(m1._power);
-		} else if (this._power != m1._power) {// if the powers are diffrent.
-			System.out.println("Cannot add monnoms whith diffrent powers!" + "---> " + this + "+" + m1);
-			return;
-		}
-
+		} else if (this._power != m1._power) // if the powers are diffrent.
+			throw new RuntimeException("Cannot add monnoms with diffrent powers!" + "---> " + this + "+" + m1);
 		else
 			this.set_coefficient(this._coefficient + m1._coefficient);
 	}

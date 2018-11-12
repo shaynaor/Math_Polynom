@@ -415,4 +415,5 @@ public class Test {
 		System.out.println("Polynom p5 - Polynom p6=" + p5);
 		System.out.println();
 	}
+	
 }

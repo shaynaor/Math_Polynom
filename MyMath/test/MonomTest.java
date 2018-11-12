@@ -106,6 +106,16 @@ class MonomTest {
 		Monom result2 = new Monom(-2.5, 3);
 		assertEquals(result2.get_coefficient(), m3.get_coefficient());
 		assertEquals(result2.get_power(), m3.get_power());
+		
+		Monom m5 = new Monom (1,1);
+		Monom m6 = new Monom(5,3);
+		
+		try {
+			m5.add(m6);
+		}
+		catch(RuntimeException e) {
+			assertTrue(true);
+		}
 	}
 
 	@Test
