@@ -144,6 +144,27 @@ class TestPolynom {
 		assertTrue(p4.equals(p8));
 	}
 	
+	@Test
+	void test_polynom_f() {
+		assertEquals(0, p1.f(10));
+		assertEquals(208, p2.f(2));
+		assertEquals(-1647, p2.f(-3));
+		assertEquals(7, p3.f(0));
+		assertEquals(28, p4.f(-3));
+		assertEquals(7, p4.f(0));
+	}
+	
+	@Test
+	void test_polynom_isZero() {
+		assertTrue(p1.isZero());
+		assertTrue(!p2.isZero());
+		assertTrue(!p3.isZero());
+		assertTrue(!p4.isZero());
+		p1.add(m4);
+		assertTrue(!p1.isZero());
+		
+	}
+	
 	
 
 }
