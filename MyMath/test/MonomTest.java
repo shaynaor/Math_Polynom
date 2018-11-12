@@ -13,7 +13,7 @@ class MonomTest {
 	static Monom m1 = new Monom("0x^1");
 	static Monom m2 = new Monom("-x");
 	static Monom m3 = new Monom("2x^3");
-	static Monom m4 = new Monom(4.5, 2);
+	static Monom m4 = new Monom(-4.5, 3);
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,7 +32,7 @@ class MonomTest {
 		m1 = new Monom("0x^1");
 		m2 = new Monom("-x");
 		m3 = new Monom("2x^3");
-		m4 = new Monom(4.5, 2);
+		m4 = new Monom(-4.5, 3);
 	}
 
 	@Test
@@ -68,19 +68,19 @@ class MonomTest {
 			counter--;
 		}
 	}
-	
+
 	@Test
 	void test_monom_copy_constructor() {
 		Monom copy1 = new Monom(m1);
 		Monom copy2 = new Monom(m2);
 		Monom copy3 = new Monom(m3);
 		Monom copy4 = new Monom(m4);
-		
+
 		assertNotEquals(copy1, m1);
 		assertNotEquals(copy2, m2);
 		assertNotEquals(copy3, m3);
 		assertNotEquals(copy4, m4);
-		
+
 		assertEquals(copy1.get_coefficient(), m1.get_coefficient());
 		assertEquals(copy1.get_power(), m1.get_power());
 		assertEquals(copy2.get_coefficient(), m2.get_coefficient());
@@ -89,6 +89,29 @@ class MonomTest {
 		assertEquals(copy3.get_power(), m3.get_power());
 		assertEquals(copy4.get_coefficient(), m4.get_coefficient());
 		assertEquals(copy4.get_power(), m4.get_power());
+	}
+
+	@Test
+	void test_monom_string_constructor() {
+		assertEquals(0, m1.get_coefficient());
+		assertEquals(0, m1.get_power());// if coefficient == 0 -----> power = 0.
+		assertEquals(-1, m2.get_coefficient());
+		assertEquals(1, m2.get_power());
+		assertEquals(2, m3.get_coefficient());
+		assertEquals(3, m3.get_power());
+	}
+
+	@Test
+	void test_monom_add() {
+		m1.add(m2);
+		Monom resault1 = new Monom(-1,1);
+		assertEquals(resault1.get_coefficient(), m1.get_coefficient());
+		assertEquals(resault1.get_power(), m1.get_power());
+		
+		m3.add(m4);
+		Monom resault2 = new Monom(-2.5,3);
+		assertEquals(resault2.get_coefficient(), m3.get_coefficient());
+		assertEquals(resault2.get_power(), m3.get_power());
 	}
 
 }
