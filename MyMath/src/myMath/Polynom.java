@@ -63,6 +63,8 @@ public class Polynom implements Polynom_able {
 				temp.add(m1);
 				it.remove();
 				this.poly.add(temp);
+				this.poly.sort(monomcmp);
+				this.removeZero();
 				return;
 			}
 		}
@@ -292,7 +294,11 @@ public class Polynom implements Polynom_able {
 				ans += "+" + s.toString();
 			} else // if its smaller then 0 add " - "
 			{
-				ans += "-" + Math.abs(s.get_coefficient()) + "x^" + s.get_power();
+				if(s.get_power() == 1)
+					ans += "-" + Math.abs(s.get_coefficient()) + "x";
+				else
+					ans += "-" + Math.abs(s.get_coefficient()) + "x^" + s.get_power();
+				
 			}
 		}
 		return ans;
