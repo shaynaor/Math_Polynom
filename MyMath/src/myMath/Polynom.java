@@ -210,6 +210,18 @@ public class Polynom implements Polynom_able {
 	 * @return the x solution to f(x)=0.
 	 */
 	public double root(double x0, double x1, double eps) {
+		if (f(x0) * f(x1) > 0 || this.isZero())
+			throw new RuntimeException("Error: f(x0) and f(x1) must be from the oposite side of x-line.");
+		if (Math.abs(f(x0)) < eps)
+			return x0;
+		if (Math.abs(f(x1)) < eps)
+			return x1;
+		double temp = 0;
+		if (x0 > x1) {
+			temp = x0;
+			x0 = x1;
+			x1 = temp;
+		}
 		double mid = 0;
 		while ((x1 - x0) >= eps) {
 			mid = (x0 + x1) / 2; // find the middle point.
@@ -294,11 +306,11 @@ public class Polynom implements Polynom_able {
 				ans += "+" + s.toString();
 			} else // if its smaller then 0 add " - "
 			{
-				if(s.get_power() == 1)
+				if (s.get_power() == 1)
 					ans += "-" + Math.abs(s.get_coefficient()) + "x";
 				else
 					ans += "-" + Math.abs(s.get_coefficient()) + "x^" + s.get_power();
-				
+
 			}
 		}
 		return ans;
