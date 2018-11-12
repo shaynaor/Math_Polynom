@@ -71,7 +71,24 @@ class MonomTest {
 	
 	@Test
 	void test_monom_copy_constructor() {
+		Monom copy1 = new Monom(m1);
+		Monom copy2 = new Monom(m2);
+		Monom copy3 = new Monom(m3);
+		Monom copy4 = new Monom(m4);
 		
+		assertNotEquals(copy1, m1);
+		assertNotEquals(copy2, m2);
+		assertNotEquals(copy3, m3);
+		assertNotEquals(copy4, m4);
+		
+		assertEquals(copy1.get_coefficient(), m1.get_coefficient());
+		assertEquals(copy1.get_power(), m1.get_power());
+		assertEquals(copy2.get_coefficient(), m2.get_coefficient());
+		assertEquals(copy2.get_power(), m2.get_power());
+		assertEquals(copy3.get_coefficient(), m3.get_coefficient());
+		assertEquals(copy3.get_power(), m3.get_power());
+		assertEquals(copy4.get_coefficient(), m4.get_coefficient());
+		assertEquals(copy4.get_power(), m4.get_power());
 	}
 
 }
