@@ -1,6 +1,8 @@
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -176,6 +178,32 @@ class TestPolynom {
 		assertEquals(0, Math.round(p2.root(-0.4, 0.4, 0.0001)));
 		assertEquals(1, Math.round(p3.root(0, 2, 0.0001)));
 		assertEquals(-1, Math.round(p3.root(-2, 0, 0.0001)));
+	}
+	
+	@Test
+	void test_polynom_substract() {
+		p1.substract(p2);
+		Polynom result_1 = new Polynom("2x^3-7x^5");
+		assertEquals(result_1.toString(), p1.toString());
+		
+		p3.substract(p4);
+		Polynom result_2 = new Polynom("6.2x-2.0x^2-4.0x^3-2.7x^4");
+		assertEquals(result_2.toString(), p3.toString());
+	}
+	
+	@Test
+	void test_polynom_iterator() {
+		Iterator<Monom> it = p2.iteretor();
+		Monom m1 = it.next();
+		
+		assertEquals(-2,m1.get_coefficient());
+		assertEquals(3,m1.get_power());
+		
+		m1= it.next();
+		
+		assertEquals(7,m1.get_coefficient());
+		assertEquals(5,m1.get_power());
+		
 	}
 		
 }
