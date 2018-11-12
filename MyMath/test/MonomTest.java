@@ -104,14 +104,43 @@ class MonomTest {
 	@Test
 	void test_monom_add() {
 		m1.add(m2);
-		Monom resault1 = new Monom(-1,1);
-		assertEquals(resault1.get_coefficient(), m1.get_coefficient());
-		assertEquals(resault1.get_power(), m1.get_power());
+		Monom result1 = new Monom(-1,1);
+		assertEquals(result1.get_coefficient(), m1.get_coefficient());
+		assertEquals(result1.get_power(), m1.get_power());
 		
 		m3.add(m4);
-		Monom resault2 = new Monom(-2.5,3);
-		assertEquals(resault2.get_coefficient(), m3.get_coefficient());
-		assertEquals(resault2.get_power(), m3.get_power());
+		Monom result2 = new Monom(-2.5,3);
+		assertEquals(result2.get_coefficient(), m3.get_coefficient());
+		assertEquals(result2.get_power(), m3.get_power());
+	}
+	
+	@Test
+	void test_monom_derivative() {
+		Monom m1_deri = new Monom(0,0);
+		Monom m2_deri = new Monom(-1,0);
+		Monom m3_deri = new Monom("6x^2");
+		Monom m4_deri = new Monom("-13.5x^2");
+		
+		assertEquals(m1_deri.get_coefficient(), m1.derivative().get_coefficient());
+		assertEquals(m1_deri.get_power(), m1.derivative().get_power());
+		assertEquals(m2_deri.get_coefficient(), m2.derivative().get_coefficient());
+		assertEquals(m2_deri.get_power(), m2.derivative().get_power());
+		assertEquals(m3_deri.get_coefficient(), m3.derivative().get_coefficient());
+		assertEquals(m3_deri.get_power(), m3.derivative().get_power());
+		assertEquals(m4_deri.get_coefficient(), m4.derivative().get_coefficient());
+		assertEquals(m4_deri.get_power(), m4.derivative().get_power());
+	}
+	
+	@Test
+	void test_monom_f() {
+		double result1= 0;
+		assertEquals(result1, m1.f(10));
+		double result2= -10;
+		assertEquals(result2, m2.f(10));
+		double result3= 2000;
+		assertEquals(result3, m3.f(10));
+		double result4= -4500;
+		assertEquals(result4, m4.f(10));
 	}
 
 }
