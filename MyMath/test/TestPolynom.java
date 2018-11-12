@@ -21,7 +21,7 @@ class TestPolynom {
 	static Monom m1 = new Monom("0x^1");
 	static Monom m2 = new Monom("-x");
 	static Monom m3 = new Monom("2x^3");
-	static Monom m4 = new Monom(4, 2);
+	static Monom m4 = new Monom(-4.5, 3);
 
 	@AfterEach
 	void tearDown() throws Exception {
@@ -33,7 +33,7 @@ class TestPolynom {
 		m1 = new Monom("0x^1");
 		m2 = new Monom("-x");
 		m3 = new Monom("2x^3");
-		m4 = new Monom(4, 2);
+		m4 = new Monom(-4.5, 3);
 	}
 
 	@Test
@@ -53,13 +53,30 @@ class TestPolynom {
 	@Test
 	void test_polynom_add_monom() {
 		p1.add(m1);
-		assertEquals("0", p1.toString());
+		Polynom result_1 = new Polynom("0");
+		assertEquals(result_1.toString(), p1.toString());
+		
 		p2.add(m2);
-		assertEquals("-1.0x-2.0x^3+7.0x^5", p2.toString());
+		Polynom result_2 = new Polynom("-1.0x-2.0x^3+7.0x^5");
+		assertEquals(result_2.toString(), p2.toString());
 		p3.add(m3);
-		assertEquals("7.0+5.2x-2.0x^3-2.7x^4", p3.toString());
+		Polynom result_3 = new Polynom("7.0+5.2x-2.0x^3-2.7x^4");
+		assertEquals(result_3.toString(), p3.toString());
 		p4.add(m4);
-		assertEquals("7.0-1.0x+6.0x^2", p4.toString());
+		Polynom result_4 = new Polynom("7.0-1.0x+2.0x^2-4.5x^3");
+		assertEquals(result_4.toString(), p4.toString());
+	}
+	
+	@Test
+	void test_polynom_add_polynom() {
+		p1.add(p2);
+		Polynom result_1 = new Polynom("-2.0x^3+7.0x^5");
+		assertEquals(result_1.toString(), p1.toString());
+		
+		p3.add(p4);
+		Polynom result_2 = new Polynom("14.0+4.2x+2.0x^2-4.0x^3-2.7x^4");
+		assertEquals(result_2.toString(), p3.toString());
+		
 	}
 
 }
