@@ -53,14 +53,13 @@ class MonomTest {
 				assertEquals(power, m.get_power());
 				coef = Math.random() * 10;
 				power = (int) Math.floor(Math.random() * -10);
-			}
-			catch(RuntimeException e) {
+			} catch (RuntimeException e) {
 				counter--;
 				assertTrue(true);
 			}
-			
+
 		}
-		
+
 	}
 
 	@Test
@@ -106,14 +105,13 @@ class MonomTest {
 		Monom result2 = new Monom(-2.5, 3);
 		assertEquals(result2.get_coefficient(), m3.get_coefficient());
 		assertEquals(result2.get_power(), m3.get_power());
-		
-		Monom m5 = new Monom (1,1);
-		Monom m6 = new Monom(5,3);
-		
+
+		Monom m5 = new Monom(1, 1);
+		Monom m6 = new Monom(5, 3);
+
 		try {
 			m5.add(m6);
-		}
-		catch(RuntimeException e) {
+		} catch (RuntimeException e) {
 			assertTrue(true);
 		}
 	}
@@ -187,6 +185,15 @@ class MonomTest {
 		Monom result2 = new Monom(6.5, 3);
 		assertEquals(result2.get_coefficient(), m3.get_coefficient());
 		assertEquals(result2.get_power(), m3.get_power());
+
+		Monom m5 = new Monom(1, 1);
+		Monom m6 = new Monom(5, 3);
+
+		try {
+			m5.subMonom(m6);
+		} catch (RuntimeException e) {
+			assertTrue(true);
+		}
 	}
 
 }

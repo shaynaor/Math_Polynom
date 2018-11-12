@@ -166,11 +166,8 @@ public class Monom implements function {
 		else if (this._coefficient == 0) {// if my monom is the zero monom.
 			this.set_coefficient((-1) * m1._coefficient);
 			this.set_power(m1._power);
-		} else if (this._power != m1._power) {// if the powers are diffrent.
-			System.out.println("Cannot substract monnoms whith diffrent powers! ---> " + this + "-" + m1);
-			return;
-		}
-
+		} else if (this._power != m1._power) // if the powers are diffrent.
+			throw new RuntimeException("Cannot substract monnoms whith diffrent powers! ---> " + this + "-" + m1);
 		else
 			this.set_coefficient(this._coefficient - m1._coefficient);
 	}
