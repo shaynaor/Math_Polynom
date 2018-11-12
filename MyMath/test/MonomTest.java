@@ -2,7 +2,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,18 +13,6 @@ class MonomTest {
 	static Monom m2 = new Monom("-x");
 	static Monom m3 = new Monom("2x^3");
 	static Monom m4 = new Monom(-4.5, 3);
-
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
 
 	@AfterEach
 	void tearDown() throws Exception {
@@ -150,7 +137,7 @@ class MonomTest {
 		assertEquals(2, m3.get_coefficient());
 		assertEquals(-4.5, m4.get_coefficient());
 	}
-	
+
 	@Test
 	void test_monom_get_power() {
 		assertEquals(0, m1.get_power());
@@ -158,16 +145,29 @@ class MonomTest {
 		assertEquals(3, m3.get_power());
 		assertEquals(3, m4.get_power());
 	}
-	
+
 	@Test
 	void test_monom_multyply() {
 		m1.multiply(m2);
-		Monom result1 = new Monom (0,0);
+		Monom result1 = new Monom(0, 0);
 		assertEquals(result1.get_coefficient(), m1.get_coefficient());
 		assertEquals(result1.get_power(), m1.get_power());
-		
+
 		m3.multiply(m4);
-		Monom result2 = new Monom (-9,6);
+		Monom result2 = new Monom(-9, 6);
+		assertEquals(result2.get_coefficient(), m3.get_coefficient());
+		assertEquals(result2.get_power(), m3.get_power());
+	}
+
+	@Test
+	void test_monom_subMonom() {
+		m1.subMonom(m2);
+		Monom result1 = new Monom(1, 1);
+		assertEquals(result1.get_coefficient(), m1.get_coefficient());
+		assertEquals(result1.get_power(), m1.get_power());
+
+		m3.subMonom(m4);
+		Monom result2 = new Monom(6.5, 3);
 		assertEquals(result2.get_coefficient(), m3.get_coefficient());
 		assertEquals(result2.get_power(), m3.get_power());
 	}
