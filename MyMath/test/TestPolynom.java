@@ -60,7 +60,6 @@ class TestPolynom {
 		assertEquals("7.0+5.2x-2.0x^3-2.7x^4", p3.toString());
 		p4.add(m4);
 		assertEquals("7.0-1.0x+6.0x^2", p4.toString());
-
 	}
 
 }
