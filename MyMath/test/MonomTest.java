@@ -46,14 +46,21 @@ class MonomTest {
 		coef = 0;
 		power = 0;
 		counter = 50;
-		while (counter > 0) {// check numbers with negative coefficient.
-			Monom m = new Monom(coef, power);
-			assertEquals(coef, m.get_coefficient());
-			assertEquals(power, m.get_power());
-			coef = Math.random() * -10;
-			power = (int) Math.floor(Math.random() * 10);
-			counter--;
+		while (counter > 0) {// check numbers with negative power.
+			try {
+				Monom m = new Monom(coef, power);
+				assertEquals(coef, m.get_coefficient());
+				assertEquals(power, m.get_power());
+				coef = Math.random() * 10;
+				power = (int) Math.floor(Math.random() * -10);
+			}
+			catch(RuntimeException e) {
+				counter--;
+				assertTrue(true);
+			}
+			
 		}
+		
 	}
 
 	@Test

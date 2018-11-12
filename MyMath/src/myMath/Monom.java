@@ -22,12 +22,14 @@ public class Monom implements function {
 	 * @param b the power.
 	 */
 	public Monom(double a, int b) {
-		if (a != 0) { // if the monom is'nt the zero monom.
-			this.set_coefficient(a);
-			this.set_power(b);
-		} else {
+		if(b < 0) //if the power is negative.
+			throw new RuntimeException("Can not insert negative power!!");
+		else if (a == 0) { // if the monom is'nt the zero monom.
 			this.set_coefficient(0);
 			this.set_power(0);
+		} else {
+			this.set_coefficient(a);
+			this.set_power(b);
 		}
 	}
 
