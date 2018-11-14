@@ -213,28 +213,25 @@ public class Monom implements function {
 		String dub = "";
 		String into = "";
 		int length = s.length();
-		double a=0;
-		int b=0;
+		double a = 0;
+		int b = 0;
 		int i = 0;
-        s.toLowerCase();
-        String errorMessege="This format is not accepted, Correct format is: ax^b where a is double and b is a positive int\n"
-        + "You can only use char 'x' as a variable\n"+"You can only use char '^' as a power\n"
-        +"No Spaces Allowed!\nString cannot be empty!\n"+"EXAMPLES FOR CORRECT FORMAT:\n"+"Monom: 2x^12, -2x^12, +2x^12\n"+
-        "Polynom: 2x^12+31x^2-x^3+x+2\n\n\n";
-        
-        
-        if(s.length()==0) {
-        	System.err.println("The string cannot be empty, input a value please.\n");
+		s.toLowerCase();
+		String errorMessege = "This format is not accepted, Correct format is: ax^b where a is double and b is a positive int\n"
+				+ "You can only use char 'x' as a variable\n" + "You can only use char '^' as a power\n"
+				+ "No Spaces Allowed!\nString cannot be empty!\n" + "EXAMPLES FOR CORRECT FORMAT:\n"
+				+ "Monom: 2x^12, -2x^12, +2x^12\n" + "Polynom: 2x^12+31x^2-x^3+x+2\n\n\n";
+
+		if (s.length() == 0) {
+			System.err.println("The string cannot be empty, input a value please.\n");
 			throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
-        }
-        
-        
+		}
+
 		int index = s.indexOf('x');
 		if (index < 0) { // if its just a number example: (12)
 			try {
-			a = Double.parseDouble(s);
-			}
-			catch(Exception e) {
+				a = Double.parseDouble(s);
+			} catch (Exception e) {
 				System.err.println(errorMessege);
 				throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 			}
@@ -243,21 +240,21 @@ public class Monom implements function {
 			this.set_power(b);
 			return m1;
 		} else {
-			if (length == 1&&s.contains("x")) { // if its just "x"
+			if (length == 1 && s.contains("x")) { // if its just "x"
 				b = 1;
 				a = 1;
 				this.set_coefficient(a);
 				this.set_power(b);
 				return m1;
 			}
-			if (length == 2 && s.charAt(0) =='-'&&s.charAt(1)=='x') { // if its "-x"
+			if (length == 2 && s.charAt(0) == '-' && s.charAt(1) == 'x') { // if its "-x"
 				b = 1;
 				a = -1;
 				this.set_coefficient(a);
 				this.set_power(b);
 				return m1;
 			}
-			if (length == 2 && s.charAt(0) == '+'&&s.charAt(1)=='x') { // if its "+x"
+			if (length == 2 && s.charAt(0) == '+' && s.charAt(1) == 'x') { // if its "+x"
 				b = 1;
 				a = 1;
 				this.set_coefficient(a);
@@ -272,12 +269,11 @@ public class Monom implements function {
 				}
 				try {
 					b = Integer.parseInt(into);
-				}
-				catch(Exception e) {
+				} catch (Exception e) {
 					System.err.println(errorMessege);
 					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
-				if(b<0) {
+				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
 				}
 				a = 1;
@@ -285,7 +281,7 @@ public class Monom implements function {
 				this.set_power(b);
 				return m1;
 			}
-			if (s.charAt(0) == '-' &&s.charAt(1) == 'x'&&s.length() > 1 && s.charAt(1) == 'x') { // if its "-x^b"
+			if (s.charAt(0) == '-' && s.charAt(1) == 'x' && s.length() > 1 && s.charAt(1) == 'x') { // if its "-x^b"
 				i = 3;
 				while (i < s.length()) {
 					into += s.charAt(i);
@@ -293,12 +289,11 @@ public class Monom implements function {
 				}
 				try {
 					b = Integer.parseInt(into);
-				}
-				catch(Exception e) {
+				} catch (Exception e) {
 					System.err.println(errorMessege);
 					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
-				if(b<0) {
+				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
 				}
 				a = -1;
@@ -306,8 +301,8 @@ public class Monom implements function {
 				this.set_power(b);
 				return m1;
 			}
-			
-			if (s.charAt(0) == '+' &&s.charAt(1) == 'x' && s.length() > 1 && s.charAt(1) == 'x') { // if its "+x^b"
+
+			if (s.charAt(0) == '+' && s.charAt(1) == 'x' && s.length() > 1 && s.charAt(1) == 'x') { // if its "+x^b"
 				i = 3;
 				while (i < s.length()) {
 					into += s.charAt(i);
@@ -315,12 +310,11 @@ public class Monom implements function {
 				}
 				try {
 					b = Integer.parseInt(into);
-				}
-				catch(Exception e) {
+				} catch (Exception e) {
 					System.err.println(errorMessege);
 					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
-				if(b<0) {
+				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
 				}
 				a = 1;
@@ -333,16 +327,14 @@ public class Monom implements function {
 				dub += s.charAt(i);
 				i++;
 			}
-			
+
 			try {
 				a = Double.parseDouble(dub);
-			}
-			catch(Exception e) {
+			} catch (Exception e) {
 				System.err.println(errorMessege);
 				throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 			}
-			
-			
+
 			index = s.indexOf('^');
 			if (index < 0) { // if its a number with ax example:(12x)
 				b = 1;
@@ -357,15 +349,14 @@ public class Monom implements function {
 				}
 				try {
 					b = Integer.parseInt(into);
-				}
-				catch(Exception e) {
+				} catch (Exception e) {
 					System.err.println(errorMessege);
 					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
-				if(b<0) {
+				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
 				}
-				
+
 				this.set_coefficient(a);
 				this.set_power(b);
 				return m1;

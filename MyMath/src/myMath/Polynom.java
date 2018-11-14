@@ -406,7 +406,7 @@ public class Polynom implements Polynom_able {
 		String ans = "";
 		String hold = "";
 		s.toLowerCase();
-		if(s.length()==0) {
+		if (s.length() == 0) {
 			System.err.println("The string cannot be empty, input a value please.\n");
 			throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
@@ -415,7 +415,6 @@ public class Polynom implements Polynom_able {
 			while (index < s.length()) {
 				if (s.charAt(index) == '+' || s.charAt(index) == '-') { // counting the number of monoms
 					monoms++;
-
 				}
 				index++;
 			}

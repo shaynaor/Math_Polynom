@@ -92,6 +92,27 @@ class MonomTest {
 		assertEquals(1, m2.get_power());
 		assertEquals(2, m3.get_coefficient());
 		assertEquals(3, m3.get_power());
+
+		Monom goodMonom = new Monom(0, 0);
+
+		String[] good = { "0", "3", "x", "-x", "-2x", "4.5x", "-3.2x", "0x", "0x^3", "x^3", "2x^5", "-4x^3",
+				"-2.4x^7" };
+
+		for (int i = 0; i < good.length; i++) {
+			goodMonom = new Monom(good[i]);
+		}
+
+		Monom badMonom = new Monom(0, 0);
+
+		String[] bad = { "hii", "bad", "x^", "xx", "yy", "0x^-1", "3.5x^-7", "-4.7x^-8", "5a", "-3b^7" };
+
+		for (int i = 0; i < bad.length; i++) {
+
+			try {
+				badMonom = new Monom(bad[i]);
+			} catch (RuntimeException e) {
+			}
+		}
 	}
 
 	@Test

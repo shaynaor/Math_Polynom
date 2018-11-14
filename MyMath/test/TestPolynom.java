@@ -205,5 +205,6 @@ class TestPolynom {
 		assertEquals(5,m1.get_power());
 		
 	}
+	
 		
 }
