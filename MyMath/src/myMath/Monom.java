@@ -223,8 +223,7 @@ public class Monom implements function {
 				+ "Monom: 2x^12, -2x^12, +2x^12\n" + "Polynom: 2x^12+31x^2-x^3+x+2\n\n\n";
 
 		if (s.length() == 0) {
-			System.err.println("The string cannot be empty, input a value please.\n");
-			throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+			throw new RuntimeException("The string cannot be empty, input a value please.\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
 
 		int index = s.indexOf('x');
@@ -232,8 +231,7 @@ public class Monom implements function {
 			try {
 				a = Double.parseDouble(s);
 			} catch (Exception e) {
-				System.err.println(errorMessege);
-				throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+				throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 			}
 			b = 0;
 			this.set_coefficient(a);
@@ -270,11 +268,10 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					System.err.println(errorMessege);
-					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
-					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
+					throw new RuntimeException(errorMessege + "\n" + "THE POWER CAN'T BE A NEGATIVE NUMBER!");
 				}
 				a = 1;
 				this.set_coefficient(a);
@@ -290,8 +287,7 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					System.err.println(errorMessege);
-					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
@@ -311,8 +307,7 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					System.err.println(errorMessege);
-					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
@@ -331,8 +326,7 @@ public class Monom implements function {
 			try {
 				a = Double.parseDouble(dub);
 			} catch (Exception e) {
-				System.err.println(errorMessege);
-				throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+				throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 			}
 
 			index = s.indexOf('^');
@@ -350,8 +344,7 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					System.err.println(errorMessege);
-					throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
