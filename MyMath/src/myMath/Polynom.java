@@ -276,6 +276,8 @@ public class Polynom implements Polynom_able {
 			temp = eps * this.f(pos);
 			if (temp >= 0)
 				area = area + eps * this.f(pos);
+			else
+				area += Math.abs(temp);
 			pos = pos + eps;
 		}
 		return area;

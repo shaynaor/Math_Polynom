@@ -107,9 +107,11 @@ class TestPolynom {
 
 	@Test
 	void test_polynom_area() {
-		assertEquals(9, Math.round(p3.area(0, 1.223, 0.0001)));
-		assertEquals(6, Math.round(p3.area(-1.428, 0, 0.0001)));
-		assertEquals(15, Math.round(p4.area(-1, 1, 0.0001)));
+		assertEquals(9, Math.round(p3.area(0, 1.223, 0.001)));
+		assertEquals(6, Math.round(p3.area(-1.428, 0, 0.001)));
+		assertEquals(15, Math.round(p4.area(-1, 1, 0.001)));
+		Polynom p5 = new Polynom ("-5x^2+3x^3+1");
+		assertEquals(1, Math.round(p5.area(-0.401, 1.523, 0.0001)));
 	}
 
 	@Test
