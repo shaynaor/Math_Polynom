@@ -105,7 +105,6 @@ class MonomTest {
 		Monom badMonom = new Monom(0, 0);
 
 		String[] bad = { "hii", "bad", "x^", "xx", "yy", "0x^-1", "3.5x^-7", "-4.7x^-8", "5a", "-3b^7" };
-
 		for (int i = 0; i < bad.length; i++) {
 
 			try {

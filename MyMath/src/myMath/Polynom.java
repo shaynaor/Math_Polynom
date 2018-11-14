@@ -407,8 +407,7 @@ public class Polynom implements Polynom_able {
 		String hold = "";
 		s.toLowerCase();
 		if (s.length() == 0) {
-			System.err.println("The string cannot be empty, input a value please.\n");
-			throw new RuntimeException("READ THE README FILE FOR MORE INFORMATION ON INPUT");
+			throw new RuntimeException("The string cannot be empty, input a value please.\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
 
 		if (s.charAt(0) == '-') { // if the polynom starts with -
