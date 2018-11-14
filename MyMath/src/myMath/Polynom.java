@@ -211,18 +211,18 @@ public class Polynom implements Polynom_able {
 	 */
 	public double root(double x0, double x1, double eps) {
 		if (f(x0) * f(x1) > 0 || this.isZero())
-			throw new RuntimeException("Error: f(x0) and f(x1) must be from the oposite side of x-line.");
+			throw new RuntimeException("Error: f(x0) and f(x1) must be from the oposite side of x-line!");
+
+		if (x0 > x1)
+			throw new RuntimeException("Error: x0 need to be smaller then x1!");
+
 		if (Math.abs(f(x0)) < eps)
 			return x0;
 		if (Math.abs(f(x1)) < eps)
 			return x1;
-		double temp = 0;
-		if (x0 > x1) {
-			temp = x0;
-			x0 = x1;
-			x1 = temp;
-		}
+
 		double mid = 0;
+
 		while ((x1 - x0) >= eps) {
 			mid = (x0 + x1) / 2; // find the middle point.
 			if (this.f(mid) == 0) // check if the middle point is the root.
@@ -407,7 +407,8 @@ public class Polynom implements Polynom_able {
 		String hold = "";
 		s.toLowerCase();
 		if (s.length() == 0) {
-			throw new RuntimeException("The string cannot be empty, input a value please.\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+			throw new RuntimeException("The string cannot be empty, input a value please.\n"
+					+ "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
 
 		if (s.charAt(0) == '-') { // if the polynom starts with -
