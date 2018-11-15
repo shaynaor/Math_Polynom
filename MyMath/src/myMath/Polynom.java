@@ -23,7 +23,8 @@ public class Polynom implements Polynom_able {
 
 	/**
 	 * This function receives a string str of a polynom and constructs a new
-	 * polynom.
+	 * polynom. If the string is not according to the format (more information can
+	 * be found in the read me file) the function wiil throw RuntimeException.
 	 * 
 	 * @param str The string the function receives.
 	 */
@@ -201,6 +202,11 @@ public class Polynom implements Polynom_able {
 
 	/**
 	 * The function root finds a solution to the function f(x)=0 between 2 points.
+	 * The function recived x0 and x1 such as f(x0) and f(x1) must be from the
+	 * oposite side of x-line else the function will throw RuntimeException. The
+	 * function recived x0 and x1 such as x0 need to be smaller then x1 else the
+	 * function will throw RuntimeException.
+	 * 
 	 * The algorithim taken from:
 	 * https://www.geeksforgeeks.org/program-for-bisection-method/
 	 * 
@@ -261,7 +267,8 @@ public class Polynom implements Polynom_able {
 
 	/**
 	 * Compute Riemann's Integral over this Polynom starting from x0, till x1 using
-	 * eps size steps.
+	 * eps size steps. The function recived x0 and x1 such as x0 need to be smaller
+	 * then x1 else the function returns area = 0.
 	 * 
 	 * @return the approximated area above the x-axis below this Polynom and between
 	 *         the [x0,x1] range.
@@ -396,7 +403,9 @@ public class Polynom implements Polynom_able {
 	 * function will count how many monoms the string s has, and depending on the
 	 * case if the first polynom is positive or negative it will add each monom to a
 	 * new polynom p. when the function finishes the string, it will add the polynom
-	 * p to the the new polynom (this).
+	 * p to the the new polynom (this). If the string is not according to the format
+	 * (more information can be found in the read me file) the function wiil throw
+	 * RuntimeException.
 	 *
 	 * @param s The string of a polynom we receive.
 	 */
@@ -408,14 +417,15 @@ public class Polynom implements Polynom_able {
 		String ans = "";
 		String hold = "";
 		s.toLowerCase();
-		String good = "0123456789.+-x^";
-		for(int j = 0 ; j< s.length() ; j++) {
+		String good = "0123456789.+-x^";//good contains all the chars that allowed in the polynom
+		for (int j = 0; j < s.length(); j++) {
 			String temp = "";
 			temp += s.charAt(j);
-			if( !(good.contains(temp)) )
-				throw new RuntimeException("This string contains an illegal char: "+ temp+ ".\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+			if (!(good.contains(temp)))//if the polynom contains chars that not allowed.
+				throw new RuntimeException("This string contains an illegal char: " + temp + ".\n"
+						+ "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
-		if (s.length() == 0) {
+		if (s.length() == 0) {//if the string if empty.
 			throw new RuntimeException("The string cannot be empty, input a value please.\n"
 					+ "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}

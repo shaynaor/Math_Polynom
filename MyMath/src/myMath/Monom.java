@@ -14,9 +14,9 @@ package myMath;
 public class Monom implements function {
 
 	/**
-	 * Monom constructor- If the power is negative throw new RuntimeException.
-	 * If the coefficient equals to zero sets the monom to: 0x^0. 
-	 * Else srts the monom to: ax^b.
+	 * Monom constructor- If the power is negative throw RuntimeException. If the
+	 * coefficient equals to zero sets the monom to: 0x^0. Else start the monom to:
+	 * ax^b.
 	 * 
 	 * @param a the coefficient.
 	 * @param b the power.
@@ -46,7 +46,9 @@ public class Monom implements function {
 
 	/**
 	 * This function receives a string str of a monom (ax^b) when a is real, and b
-	 * is a positive integer (neutral) number , and constructs a new monom.
+	 * is a positive integer (neutral) number , and constructs a new monom. If the
+	 * string is not according to the format (more information can be found in the
+	 * read me file) the function wiil throw RuntimeException.
 	 * 
 	 * @param str The string the function receives.
 	 */
@@ -92,21 +94,6 @@ public class Monom implements function {
 	}
 
 	/**
-	 * @param x for this point x the function calculaits the derivative.
-	 * @return the deivative in the point x.
-	 */
-	public double derivative(int x) {
-		if ((this._coefficient == 0) || (this._power == 0))
-			return 0;
-		else if (this._power == 1)
-			return this._coefficient;
-		else {
-			Monom tag = new Monom((this._coefficient * this._power), (this._power - 1));
-			return tag.f(x);
-		}
-	}
-
-	/**
 	 * This function return the derivative monom.
 	 * 
 	 * @return a new monom that derivative to this monom.
@@ -127,7 +114,7 @@ public class Monom implements function {
 
 	/**
 	 * The function adds two monoms if the power is the same. Else the function
-	 * prints an error messege.
+	 * throw RuntimeException.
 	 * 
 	 * @param m1 the monom that we want to add.
 	 */
@@ -156,7 +143,7 @@ public class Monom implements function {
 
 	/**
 	 * The function subtracts two monoms if the power is the same. Else the function
-	 * prints an error messege.
+	 * throw RuntimeException.
 	 * 
 	 * @param m1 the monom that we want to subtract.
 	 */
@@ -203,7 +190,9 @@ public class Monom implements function {
 	/**
 	 * This function receives a string s of a monom (ax^b) when a is real, and b is
 	 * a positive integer (neutral) number , and constructs a new monom depending on
-	 * the case. this function return the new monom to the public function.
+	 * the case. this function return the new monom to the public function. If the
+	 * string is not according to the format (more information can be found in the
+	 * read me file) the function wiil throw RuntimeException.
 	 * 
 	 * @param s The string the function receives.
 	 * @return The new monom from the string.
@@ -223,7 +212,8 @@ public class Monom implements function {
 				+ "Monom: 2x^12, -2x^12, +2x^12\n" + "Polynom: 2x^12+31x^2-x^3+x+2\n\n\n";
 
 		if (s.length() == 0) {
-			throw new RuntimeException("The string cannot be empty, input a value please.\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+			throw new RuntimeException("The string cannot be empty, input a value please.\n"
+					+ "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 		}
 
 		int index = s.indexOf('x');
@@ -268,7 +258,8 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(
+							errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException(errorMessege + "\n" + "THE POWER CAN'T BE A NEGATIVE NUMBER!");
@@ -287,7 +278,8 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(
+							errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
@@ -307,7 +299,8 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(
+							errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
@@ -344,7 +337,8 @@ public class Monom implements function {
 				try {
 					b = Integer.parseInt(into);
 				} catch (Exception e) {
-					throw new RuntimeException(errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+					throw new RuntimeException(
+							errorMessege + "\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
 				}
 				if (b < 0) {
 					throw new RuntimeException("THE POWER CAN'T BE A NEGATIVE NUMBER!");
