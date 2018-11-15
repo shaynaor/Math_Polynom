@@ -62,26 +62,37 @@ public class PlotPolynom extends JFrame {
 		Color colormax = new Color(0, 1.0f, 0, 1.0f);                                //point max color -- green
 
 		plot.getLineRenderers(data).get(0).setColor(colorline);
-		plot.getTitle().setText("Polynom: "+m1.toString());                        //title
-		plot.getPlotArea().setBorderColor(new Color(0.0f, 0.2f, 0.8f));
+		                                                                                    //title
+		if(minx==Double.NEGATIVE_INFINITY&&maxx==Double.NEGATIVE_INFINITY) {         //no min max points                  
+		plot.getTitle().setText("Polynom: "+m1.toString());
+		}
+		
+		if(minx!=Double.NEGATIVE_INFINITY&&maxx==Double.NEGATIVE_INFINITY) {       //min point
+			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMin: ("+minx+", "+m1.f(minx)+")\n"+"Area between The graph and x axis from "+x1+" to "+x2+
+			": "+m1.area(x1, x2, 0.01));
+		}
+		if(minx==Double.NEGATIVE_INFINITY&&maxx!=Double.NEGATIVE_INFINITY) {       //max point
+			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMax: ("+maxx+", "+m1.f(maxx)+")\n"+"Area between The graph and x axis from "+x1+" to "+x2+
+			": "+m1.area(x1, x2, 0.01));
+		}
+		if(minx!=Double.NEGATIVE_INFINITY&&maxx!=Double.NEGATIVE_INFINITY) {       //max and min point
+			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMax: ("+maxx+", "+m1.f(maxx)+")\n"+"\nMin: ("+minx+", "+m1.f(minx)+")\n"
+		+"Area between The graph and x axis from "+x1+" to "+x2+": "+m1.area(x1, x2, 0.01));
+		}
+		
+		
+		plot.getPlotArea().setBorderColor(new Color(0.0f, 0.2f, 0.8f));           //border style/color
 		plot.getPlotArea().setBorderStroke(new BasicStroke(2f));
-
-		
-		
-		                                             
-
 
 
 		PointRenderer pointmin = plot.getPointRenderers(minpoint).get(0);         //min point setting
 		pointmin.setShape(new Ellipse2D.Double(-4.0, -4.0, 8.0, 8.0));             // point style
 		pointmin.setColor(colormin);
 		
-		
 
-		
 		PointRenderer pointmax = plot.getPointRenderers(maxpoint).get(0);         //max point setting
 		pointmax.setShape(new Ellipse2D.Double(-4.0, -4.0, 8.0, 8.0));            // point style
-		pointmax.setColor(colormax);
+		pointmax.setColor(colormin);
 	
 		
 		
