@@ -20,22 +20,48 @@ import de.erichseifert.gral.plots.points.DefaultPointRenderer2D;
 import de.erichseifert.gral.plots.points.PointRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
 
+
+/**
+ * This class given a polynom and a certain area from two point on the x axis, will render a graph of the function
+ * find the min and max values of the function in that area if the exist.
+ * calculate the area confined by the function and the x axis.
+ * And present it in a graphical user interface.
+ * 
+ * 
+ * We used gral for the presentation of the function in graphical user interface , link:  https://github.com/eseifert/gral
+ * @author Shay naor , Alex vaisman.
+ *
+ */
+
 public class PlotPolynom extends JFrame {
+
+
+
+
+
+
+	/**
+	 * This function given a polynom and a certain area from x1 to x2 will draw the polynom find 
+	 * * min and max points if they exist and the area confined between the function and the x axis.
+	 * @param m1 The polynom the function receive
+	 * @param x1  from this point to 
+	 * @param x2  this point
+	 */
 
 	public PlotPolynom(Polynom m1,double x1,double x2) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);                         // Size of the display window
 		setSize(800, 600);
 
-		double minx = find_Min(m1,x1,x2);                             
+		double minx = find_Min(m1,x1,x2);                             // finding min and max 
 		double maxx = find_Max(m1,x1,x2);
 		DataTable data = new DataTable(Double.class, Double.class);
 		DataTable minpoint = new DataTable(Double.class, Double.class);  
 		DataTable maxpoint = new DataTable(Double.class, Double.class);  
 
-		if(minx!=Double.NEGATIVE_INFINITY) {
-			
+		if(minx!=Double.NEGATIVE_INFINITY) {                 // adding them to data min or max if they exist
+
 			minpoint.add(minx,m1.f(minx));
-			
+
 		}
 		if(maxx!=Double.NEGATIVE_INFINITY) {
 			maxpoint.add(maxx,m1.f(maxx));
@@ -49,7 +75,7 @@ public class PlotPolynom extends JFrame {
 
 		}
 
-		XYPlot plot = new XYPlot(data,minpoint,maxpoint);
+		XYPlot plot = new XYPlot(data,minpoint,maxpoint);            // rendering points and lines from data
 		getContentPane().add(new InteractivePanel(plot));
 		LineRenderer lines = new DefaultLineRenderer2D();
 		plot.setLineRenderers(data, lines);
@@ -62,25 +88,25 @@ public class PlotPolynom extends JFrame {
 		Color colormax = new Color(0, 1.0f, 0, 1.0f);                                //point max color -- green
 
 		plot.getLineRenderers(data).get(0).setColor(colorline);
-		                                                                                    //title
+		//title
 		if(minx==Double.NEGATIVE_INFINITY&&maxx==Double.NEGATIVE_INFINITY) {         //no min max points                  
-		plot.getTitle().setText("Polynom: "+m1.toString());
+			plot.getTitle().setText("Polynom: "+m1.toString());
 		}
-		
+
 		if(minx!=Double.NEGATIVE_INFINITY&&maxx==Double.NEGATIVE_INFINITY) {       //min point
 			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMin: ("+minx+", "+m1.f(minx)+")\n"+"Area between The graph and x axis from "+x1+" to "+x2+
-			": "+m1.area(x1, x2, 0.01));
+					": "+m1.area(x1, x2, 0.01));
 		}
 		if(minx==Double.NEGATIVE_INFINITY&&maxx!=Double.NEGATIVE_INFINITY) {       //max point
 			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMax: ("+maxx+", "+m1.f(maxx)+")\n"+"Area between The graph and x axis from "+x1+" to "+x2+
-			": "+m1.area(x1, x2, 0.01));
+					": "+m1.area(x1, x2, 0.01));
 		}
 		if(minx!=Double.NEGATIVE_INFINITY&&maxx!=Double.NEGATIVE_INFINITY) {       //max and min point
 			plot.getTitle().setText("Polynom: "+m1.toString()+"\nMax: ("+maxx+", "+m1.f(maxx)+")\n"+"\nMin: ("+minx+", "+m1.f(minx)+")\n"
-		+"Area between The graph and x axis from "+x1+" to "+x2+": "+m1.area(x1, x2, 0.01));
+					+"Area between The graph and x axis from "+x1+" to "+x2+": "+m1.area(x1, x2, 0.01));
 		}
-		
-		
+
+
 		plot.getPlotArea().setBorderColor(new Color(0.0f, 0.2f, 0.8f));           //border style/color
 		plot.getPlotArea().setBorderStroke(new BasicStroke(2f));
 
@@ -88,14 +114,12 @@ public class PlotPolynom extends JFrame {
 		PointRenderer pointmin = plot.getPointRenderers(minpoint).get(0);         //min point setting
 		pointmin.setShape(new Ellipse2D.Double(-4.0, -4.0, 8.0, 8.0));             // point style
 		pointmin.setColor(colormin);
-		
+
 
 		PointRenderer pointmax = plot.getPointRenderers(maxpoint).get(0);         //max point setting
 		pointmax.setShape(new Ellipse2D.Double(-4.0, -4.0, 8.0, 8.0));            // point style
 		pointmax.setColor(colormin);
-	
-		
-		
+
 	}
 
 
@@ -119,7 +143,7 @@ public class PlotPolynom extends JFrame {
 		m.add(m1.derivative());
 		Double checkmin;
 
-		
+
 
 		if(m.f(x1)*m.f(x2)>0) {
 			return Double.NEGATIVE_INFINITY;
