@@ -65,13 +65,13 @@ class TestPolynom {
 
 		String[] bad = { "hii", "bad", "x^", "xx", "yy", "0x^-1", "3.5x^-7", "-4.7x^-8", "5a", "-3b^7","x-x^-2",
 				"7.0-1.0x,x+2.0x^2", "7.0+5.2x-4.0x^-3-2.7x^4", "7.0-1.0hx+2.0x^k2-4.5x^3", "7.0-1.0x, x+2.0x^2" , "7.0-1.0xx,x+2.0x^2"};
-		int counter = bad.length;
+		
 		for (int i = 0; i < bad.length; i++) {
 
 			try {
 				badPolynom = new Polynom(bad[i]);
 			} catch (RuntimeException e) {
-				System.out.println(counter--);
+				
 			}
 		}
 	}

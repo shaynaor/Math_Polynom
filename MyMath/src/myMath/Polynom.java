@@ -408,6 +408,13 @@ public class Polynom implements Polynom_able {
 		String ans = "";
 		String hold = "";
 		s.toLowerCase();
+		String good = "0123456789.+-x^";
+		for(int j = 0 ; j< s.length() ; j++) {
+			String temp = "";
+			temp += s.charAt(j);
+			if( !(good.contains(temp)) )
+				throw new RuntimeException("This string contains an illegal char: "+ temp+ ".\n" + "READ THE README FILE FOR MORE INFORMATION ON INPUT");
+		}
 		if (s.length() == 0) {
 			throw new RuntimeException("The string cannot be empty, input a value please.\n"
 					+ "READ THE README FILE FOR MORE INFORMATION ON INPUT");
