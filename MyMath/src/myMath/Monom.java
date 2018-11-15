@@ -14,15 +14,15 @@ package myMath;
 public class Monom implements function {
 
 	/**
-	 * Monom constructor- If the power is negative print error message. If the
-	 * coefficient equals to zero sets the monom to: 0x^0. Else srts the monom to:
-	 * ax^b.
+	 * Monom constructor- If the power is negative throw new RuntimeException.
+	 * If the coefficient equals to zero sets the monom to: 0x^0. 
+	 * Else srts the monom to: ax^b.
 	 * 
 	 * @param a the coefficient.
 	 * @param b the power.
 	 */
 	public Monom(double a, int b) {
-		if (b < 0) // if the power is negative.
+		if (b < 0) // if the power is negative trow exception.
 			throw new RuntimeException("Can not insert negative power!!");
 		else if (a == 0) { // if the monom is'nt the zero monom.
 			this.set_coefficient(0);
